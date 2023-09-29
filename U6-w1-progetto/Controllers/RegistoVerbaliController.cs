@@ -31,11 +31,11 @@ namespace U6_w1_progetto.Controllers
         {
             if (parameter == null)
             {
-                TempData["MessaggioDiConferma1"] = "a";
+                Session["MessaggioDiConferma1"] = "a";
             }
             else
             {
-                TempData["MessaggioDiConferma1"] = null;
+                Session["MessaggioDiConferma1"] = null;
             }
             return RedirectToAction("RegistoVerbali"); ;
         }
@@ -52,11 +52,11 @@ namespace U6_w1_progetto.Controllers
         {
             if (parameter == null)
             {
-                TempData["MessaggioDiConferma2"] = "a";
+                Session["MessaggioDiConferma2"] = "a";
             }
             else
             {
-                TempData["MessaggioDiConferma2"] = null;
+                Session["MessaggioDiConferma2"] = null;
             }
             return RedirectToAction("RegistoVerbali"); ;
         }
@@ -65,11 +65,11 @@ namespace U6_w1_progetto.Controllers
         {
             if (parameter == null)
             {
-                TempData["MessaggioDiConferma3"] = "a";
+                Session["MessaggioDiConferma3"] = "a";
             }
             else
             {
-                TempData["MessaggioDiConferma3"] = null;
+                Session["MessaggioDiConferma3"] = null;
             }
             return RedirectToAction("RegistoVerbali"); ;
         }
@@ -78,11 +78,11 @@ namespace U6_w1_progetto.Controllers
         {
             if (parameter == null)
             {
-                TempData["MessaggioDiConferma4"] = "a";
+                Session["MessaggioDiConferma4"] = "a";
             }
             else
             {
-                TempData["MessaggioDiConferma4"] = null;
+                Session["MessaggioDiConferma4"] = null;
             }
             return RedirectToAction("RegistoVerbali"); ;
         }
