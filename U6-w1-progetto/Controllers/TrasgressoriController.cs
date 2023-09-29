@@ -23,7 +23,7 @@ namespace U6_w1_progetto.Controllers
             trasgressore.addDb(p);
             if (trasgressore.errore != null)
             {
-                ViewBag.errore = trasgressore;
+                ViewBag.errore = trasgressore.errore;
             }
             return View();
         }
