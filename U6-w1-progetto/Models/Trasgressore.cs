@@ -31,6 +31,8 @@ namespace U6_w1_progetto.Models
         [Required(ErrorMessage = "Il Cod_Fisc è obbligatorio")]
         public string Cod_Fisc { get; set; }
 
+        public string errore { get; set; }
+
         public Trasgressore(int idangrafica, string cognome, string nome, string indirizzo, string citta, string cap, string cod_Fisc)
         {
             Idanagrafica = idangrafica;
@@ -47,27 +49,36 @@ namespace U6_w1_progetto.Models
 
         public void addDb(Trasgressore trasgressore)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString.ToString();
-            SqlConnection conn = new SqlConnection(connectionString);
-            try
+            List<Trasgressore> t = GetTrasgressione();
+            Trasgressore b = t.Find((a) => a.Cod_Fisc == trasgressore.Cod_Fisc);
+            if (b == null)
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(
-                "INSERT INTO AnagraficaTrasgresorri  VALUES (@Cognome, @Nome, @Indirizzo , @Città , @CAP, @Cod_Fisc)", conn);
-                cmd.Parameters.AddWithValue("Cognome", trasgressore.Cognome);
-                cmd.Parameters.AddWithValue("Nome", trasgressore.Nome);
-                cmd.Parameters.AddWithValue("Indirizzo", trasgressore.Indirizzo);
-                cmd.Parameters.AddWithValue("Città ", trasgressore.Città);
-                cmd.Parameters.AddWithValue("CAP", trasgressore.CAP);
-                cmd.Parameters.AddWithValue("Cod_Fisc", trasgressore.Cod_Fisc);
-                cmd.ExecuteNonQuery();
+                string connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString.ToString();
+                SqlConnection conn = new SqlConnection(connectionString);
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(
+                    "INSERT INTO AnagraficaTrasgresorri  VALUES (@Cognome, @Nome, @Indirizzo , @Città , @CAP, @Cod_Fisc)", conn);
+                    cmd.Parameters.AddWithValue("Cognome", trasgressore.Cognome);
+                    cmd.Parameters.AddWithValue("Nome", trasgressore.Nome);
+                    cmd.Parameters.AddWithValue("Indirizzo", trasgressore.Indirizzo);
+                    cmd.Parameters.AddWithValue("Città ", trasgressore.Città);
+                    cmd.Parameters.AddWithValue("CAP", trasgressore.CAP);
+                    cmd.Parameters.AddWithValue("Cod_Fisc", trasgressore.Cod_Fisc);
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    conn.Close();
+                }
             }
-            catch (Exception ex)
+            else
             {
-            }
-            finally
-            {
-                conn.Close();
+                errore = "elemento gia presente";
             }
         }
 
