@@ -1,0 +1,24 @@
+﻿@using U6_w1_progetto.Models
+@model List<Registoverbali>
+
+<table class="table whidth">
+
+    <thead>
+        <tr>
+            <th scope="col">nome</th>
+            <th scope="col">cognome</th>
+            <th scope="col">numero multe</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Registoverbali item in Model)
+        {
+            <tr>
+                <th> @item.Nome</th>
+                <td>@item.Cognome</td>
+                <td>@item.nViolazioni</td>
+            </tr>
+        }
+    </tbody>
+</table>

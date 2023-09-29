@@ -1,0 +1,10 @@
+﻿@using U6_w1_progetto.Models
+@model List<Trasgressione>
+@foreach (Trasgressione item in Model)
+{
+    <div class="d-flex container border my-2">
+        <p> @item.id  </p>
+        <p> @item.descrizione  </p>
+
+    </div>
+}

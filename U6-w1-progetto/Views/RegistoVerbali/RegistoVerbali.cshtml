@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "RegistoVerbali";
+}
+
+<h2> verbali totali @ViewBag.n </h2>
+<div class="d-flex justify-content-around mb-5">
+    <div class="me-4">
+        <a class="btn btn-info" href="@Url.Action("showpartial1", "RegistoVerbali" ,new{ parameter = $"{TempData["MessaggioDiConferma1"] }"} )"> registo violazioni per angrafica </a>
+        @if (TempData["MessaggioDiConferma1"] != null)
+        {
+
+            {
+                Html.RenderAction("GetPartialViewVerbaliNome");
+            }
+
+        }
+    </div>
+    <div>
+        <a class="btn btn-info" href="@Url.Action("showpartial2", "RegistoVerbali", new { parameter = $"{TempData["MessaggioDiConferma2"]}" })"> registo violazioni per puntidecurtati </a>
+        @if (TempData["MessaggioDiConferma2"] != null)
+        {
+
+            {
+                Html.RenderAction("GetPartialViewVerbaliPunti");
+            }
+
+        }
+    </div>
+</div>
+<div class="d-flex justify-content-around">
+    <div class="me-4">
+        <a class="btn btn-info" href="@Url.Action("showpartial3", "RegistoVerbali" ,new{ parameter = $"{TempData["MessaggioDiConferma3"] }"} )"> registo violazioni per angrafica </a>
+        @if (TempData["MessaggioDiConferma3"] != null)
+        {
+
+            {
+                Html.RenderAction("GetPartialViewVerbaliPuntiMaggiore10");
+            }
+
+        }
+    </div>
+    <div>
+        <a class="btn btn-info" href="@Url.Action("showpartial4", "RegistoVerbali", new { parameter = $"{TempData["MessaggioDiConferma4"]}" })"> registo violazioni per puntidecurtati </a>
+        @if (TempData["MessaggioDiConferma4"] != null)
+        {
+
+            {
+                Html.RenderAction("GetPartialViewVerbali400");
+            }
+
+        }
+    </div>
+</div>
