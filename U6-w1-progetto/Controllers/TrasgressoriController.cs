@@ -21,6 +21,10 @@ namespace U6_w1_progetto.Controllers
         {
             Trasgressore trasgressore = new Trasgressore();
             trasgressore.addDb(p);
+            if (trasgressore.errore != null)
+            {
+                ViewBag.errore = trasgressore;
+            }
             return View();
         }
     }
